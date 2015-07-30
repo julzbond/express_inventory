@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       price: {
-        type: Sequelize.DECIMAL(2)
+        type: Sequelize.DECIMAL(10, 2)
       },
       createdAt: {
         allowNull: false,

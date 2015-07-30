@@ -10,9 +10,9 @@ models.sequelize
     var TOTAL_PRODUCTS = faker.random.number({min: 10, max: 25});
     for (var i = 0; i < TOTAL_PRODUCTS; i++){
       productData.push({
-        name: faker.commerce.product(),
-        description: "This product is made out of " + faker.commerce.productMaterial(),
-        price: parseInt(faker.commerce.price())
+        name: faker.commerce.productName(),
+        description: "This " + faker.commerce.productAdjective().toLowerCase() + " product is made out of " + faker.commerce.productMaterial().toLowerCase() + " materials.",
+        price: Number(faker.commerce.price(0, 10000, 2))
       });
     }
     return models.Product

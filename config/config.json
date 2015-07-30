@@ -2,7 +2,7 @@
   "development": {
     "username": "juliabond",
     "password": null,
-    "database": "inventory",
+    "database": "express_inventory",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
