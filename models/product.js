@@ -5,9 +5,10 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.TEXT,
     price: DataTypes.DECIMAL(10,2)
   }, {
+    underscored: true,
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        models.Product.hasOne(models.Inventory);
       }
     }
   });
