@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         models.Product.hasOne(models.Inventory);
+        models.Product.hasMany(models.Order);
       }
     }
   });
