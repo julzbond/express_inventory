@@ -8,7 +8,8 @@ models.sequelize
   .then(function(){
     //Add Product
     var productData = [];
-    for (var i = 0; i < 10; i++){
+    var TOTAL_PRODUCTS = faker.random.number({min:10, max:30});
+    for (var i = 0; i < TOTAL_PRODUCTS; i++){
       productData.push({
         name: faker.commerce.productName(),
         description: "This " + faker.commerce.productAdjective().toLowerCase() + " product is made out of " + faker.commerce.productMaterial().toLowerCase() + " materials.",
@@ -22,7 +23,7 @@ models.sequelize
   .then(function(products){
     //Add Inventory
     var inventoryData = [];
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < products.length; i++) {
       inventoryData.push({
         quantity: faker.random.number({min: 0, max: 100}),
         product_id: products[i].id
