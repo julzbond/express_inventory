@@ -30,5 +30,29 @@ models.sequelize
       });
     }
     return models.Inventory
-      .bulkCreate(inventoryData, {returning: true});
+      .bulkCreate(inventoryData, {returning: true})
+
+      .then(function(){
+        return products;
+      });
+  })
+
+  .then(function(products){
+    //Add Orders
+    var orderData = [];
+    var TOTAL_ORDERS = faker.random.number({min:5, max: 25});
+    for (var i = 0; i < TOTAL_ORDERS; i++){
+      orderData.push({
+        name: faker.name.firstName(),
+        quantity: faker.random.number({min:1, max:20})
+      });
+    }
+    return models.Order
+      .bulkCreate(orderData, {returning: true})
+      .then(function(orders){
+        orders.forEach(function(order){
+          var product = faker.random.arrayElement(products);
+          product.addOrder(order);
+        });
+      });
   });
